@@ -11,6 +11,7 @@
 ###  To run the server.
 >```
 >$git clone https://github.com/donymvarkey/swapi.git
+>$cd swapi
 >$docker-compose up --build
 >```
 ---  
@@ -20,17 +21,17 @@
 > end-point -->  **/character/add**  
 req-type --> **POST**  
 params --> {
->>name ==> String
-height ==> String
-mass ==> String
-hair_color ==> String
-eye_color ==> String
-birth_year ==> String
-gender ==> String
-homeworld ==> String
-species ==> String
-vehicles ==> String
-starships ==> String
+>>name ==> String  
+height ==> String  
+mass ==> String  
+hair_color ==> String  
+eye_color ==> String  
+birth_year ==> String  
+gender ==> String  
+homeworld ==> String  
+species ==> String  
+vehicles ==> String  
+starships ==> String  
 
 >}
 >#### response-ok: 
@@ -92,16 +93,16 @@ req-type --> **GET**
 >end-point --> **/character/:name**
 request-type --> **GET**
 params --> {
->>name ==> String
+>>name ==> String  
 
 >}
 
-> **example-request** 
+> **example-request**    
 >  ``
 >$curl -X GET localhost:8000/character/luke%20skywalker
 > ``
 
->**example-response** 
+>**example-response**  
 ```
 {
 	"status":true,
