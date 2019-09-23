@@ -33,7 +33,7 @@ species ==> String
 vehicles ==> String  
 starships ==> String  
 
->}
+>}  
 > **example response** 
 ```
 {
