@@ -50,7 +50,7 @@ req-type --> **GET**
 >```
 >$curl -X GET localhost:8000/character/all
 >```
-**example response**   
+>**example response**   
  ```
 {
 	"status":true,
