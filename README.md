@@ -34,7 +34,7 @@ vehicles ==> String
 starships ==> String  
 
 >}
->#### response-ok: 
+> **example response** 
 ```
 {
    status: true,
@@ -90,8 +90,8 @@ req-type --> **GET**
 
 ### Search for a particular character
 
->end-point --> **/character/:name**
-request-type --> **GET**
+>end-point --> **/character/:name**  
+request-type --> **GET**  
 params --> {
 >>name ==> String  
 
