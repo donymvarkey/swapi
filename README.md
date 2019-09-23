@@ -3,9 +3,9 @@
 
 
 ### Requirements
-> Node.Js >=10
-> Docker > 15
-> Mongo > 3
+> Node.Js >=10  
+> Docker > 15  
+> Mongo > 3  
 
 ---
 ###  To run the server.
@@ -17,8 +17,8 @@
 
 ### Add a character to DB
 
-> end-point -->  **/character/add**
-req-type --> **POST**
+> end-point -->  **/character/add**  
+req-type --> **POST**  
 params --> {
 >>name ==> String
 height ==> String
@@ -43,9 +43,9 @@ starships ==> String
 ---
 ### Get all character details
 
->end-point --> **/character/all**
-req-type --> **GET**
-**example-response** 
+>end-point --> **/character/all**  
+req-type --> **GET**  
+**example-response**   
  ```
 {
 	"status":true,
