@@ -46,7 +46,11 @@ starships ==> String
 
 >end-point --> **/character/all**  
 req-type --> **GET**  
-**example-response**   
+**example request**
+>```
+>$curl -X GET localhost:8000/character/all
+>```
+**example response**   
  ```
 {
 	"status":true,
