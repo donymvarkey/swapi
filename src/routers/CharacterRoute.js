@@ -6,6 +6,7 @@ const CharacterModel = require('../models/CharacterModel');
 
 var router = express.Router();
 
+
 router.post('/character/add', async (req, res) => {
     var errors = validationResult(req);
     if (!errors.isEmpty()) {
