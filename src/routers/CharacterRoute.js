@@ -6,7 +6,9 @@ const CharacterModel = require('../models/CharacterModel');
 
 var router = express.Router();
 
-
+/**
+ * Add a character to the database
+ */
 router.post('/character/add', async (req, res) => {
     var errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -53,6 +55,10 @@ router.post('/character/add', async (req, res) => {
         })
     }
 })
+
+/**
+ * Get all characters from database
+ */
 router.get('/character/all', async(req, res) => {
     var errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -84,6 +90,10 @@ router.get('/character/all', async(req, res) => {
         })
     }
 })
+
+/**
+ * Get a particular character fro database
+ */
 router.get('/character/:name', async(req, res) => {
     var errors = validationResult(req);
     if (!errors.isEmpty()) {
