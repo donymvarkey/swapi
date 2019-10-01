@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-// const DatabaseControllerPG = require('./Controllers/DatabaseControllerPG');
 
 const UserRouter = require('./routers/UserRoute');
 const CharacterRouter = require('./routers/CharacterRoute');
@@ -43,21 +42,6 @@ class SwapiServer{
         });
         //ignore this route
         api.use('/s',express.static('./src/public'))
-        //setup the database
-        // var db = new DatabaseControllerPG({
-        //     host    : this.options.db.host,
-        //     user    : this.options.db.user,
-        //     password: this.options.db.password,
-        //     db      : this.options.db.db
-        // });
-
-        // var dbStatus = await db.makeConnection();
-        // if(dbStatus !== true){
-        //     return false;
-        // }
-
-        // api.locals.db = db;
-        // api.set('db',db);
         api.set('x-powered-by',false);
         api.set('signature',this.options.signature);
 
@@ -77,7 +61,7 @@ class SwapiServer{
      * start the server on the specifed port in the options
      */
     async startServer(){
-        //set server congiurations
+        //set server congiurations and database
         await mongoose.connect(this.options.mongodb.uri,{
             useCreateIndex: true,
             useNewUrlParser: true,
@@ -96,7 +80,6 @@ class SwapiServer{
         await this.mountRoutes();
 
         // start the server
-        // this.startSocketService();
         this.api.listen( this.options.port,() =>{
             console.log("INFO: Server Started.");
             console.log("INFO: Listening on "+this.options.port);
