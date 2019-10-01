@@ -14,33 +14,6 @@
 >$cd swapi
 >$docker-compose up --build
 >```
----  
-
-### Add a character to DB
-
-> end-point -->  **/character/add**  
-req-type --> **POST**  
-params --> {
->>name ==> String  
-height ==> String  
-mass ==> String  
-hair_color ==> String  
-eye_color ==> String  
-birth_year ==> String  
-gender ==> String  
-homeworld ==> String  
-species ==> String  
-vehicles ==> String  
-starships ==> String  
-
->}  
-> **example response** 
-```
-{
-   status: true,
-   msg: 'Data saved'
-}
-```
 ---
 ### Get all character details
 
