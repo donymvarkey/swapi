@@ -4,8 +4,8 @@
 
 ### Requirements
 > Node.Js >=10  
-> Docker > 15  
-> Mongo > 3  
+> Docker >= 15  
+> Mongo >= 3  
 
 ---
 ###  To run the server.
