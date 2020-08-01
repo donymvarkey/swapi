@@ -9,11 +9,48 @@ const UserModel = require('../models/UserModel');
 
 var router = express.Router();
 
-router.post('/user/login', [
-    body('username').exists(),
+router.post('/user/register', [
+    body('name').exists(),
+    body('email').exists(),
     body('password').exists()
 ], async (req, res) => {
-    const {username, password} = req.body;
+    try {
+        const {name, email, password} = req.body;
+
+        var hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+        var user = new UserModel({
+           name: name,
+           email: email,
+           password: hash
+        })
+
+        var data = await user.save();
+        if (data) {
+            res.status(200).json({
+                status: true,
+                msg: 'success'
+            })
+        }else {
+            res.status(400).json({
+                status: false,
+                msg: 'failed'
+            })
+        }
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            status: false,
+            msg: "internal server error"
+        })
+    }
+})
+
+router.post('/user/login', [
+    body('email').exists(),
+    body('password').exists()
+], async (req, res) => {
+    const {email, password} = req.body;
     var errors, data;
     
     errors = validationResult(req);
@@ -26,21 +63,20 @@ router.post('/user/login', [
     }
 
     try {
-        data = await UserModel.findOne({username: username});
+        data = await UserModel.findOne({email: email});
         if (data == null || data == undefined) {
             res.status(404).json({
                 status: false,
                 msg: "user not found"
             })
-            return;
+            return; start
         }
 
         if (bcrypt.compareSync(password, data.password)) {
             signiningData = {
-                username: data.username,
+                username: data.email,
                 id: data._id,
-                privilege: data.privilege,
-                serviceprovider: data.serviceprovider
+                privilege: data.privilege
             }
 
             token = jwt.sign(signiningData, defaults.signature);
@@ -77,7 +113,7 @@ router.get('/user/check/username', [
         return;
     }
     try {
-        var data = await UserModel.findOne({username: username});
+        var data = await UserModel.findOne({email: username});
         if (data) {
             res.status(400).json({
                 status: false,
